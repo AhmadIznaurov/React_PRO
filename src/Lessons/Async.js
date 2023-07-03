@@ -5,7 +5,7 @@ export const Async = () => {
     const y = 5
     const str = 'start';
     const strForAsync = 'Please, start your job after 4 second';
-
+    const numAsync = 22 + 55
 
 
     alert(y)
@@ -26,6 +26,11 @@ export const Async = () => {
 }, 4000)
 
 
+    setTimeout( () => {
+        alert(numAsync);
+    }, 10000)
+
+
     return "Hello world"
 
 
@@ -33,6 +38,6 @@ export const Async = () => {
 }
 
 
-// Синхронность
+// Синхронность - Sync
 
-// Асинхронность
+// Асинхронность - Async
