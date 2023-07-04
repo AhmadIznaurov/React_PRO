@@ -1,4 +1,5 @@
 import React from 'react';
+import {func} from "./export.module";
 
 export const Fetch = () => {
 
@@ -40,7 +41,8 @@ export const Fetch = () => {
     // })
 
 
+   console.log(func(8,9))
 
-    
+
 
 }
