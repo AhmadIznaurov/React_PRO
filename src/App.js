@@ -1,12 +1,14 @@
 import './App.css';
 import {Async} from "./Lessons/Lesson1/Async";
-import {Fetch} from "./Lessons/Lesson2/Fetch";
+import {FetchJs} from "./Lessons/Lesson2/Fetch-js";
+import {FetchReact} from "./Lessons/Lesson2/Fetch_react";
 
 function App() {
   return (
     <div className="App">
      {/*<Async />*/}
-        <Fetch />
+     {/*   <FetchJs />*/}
+        <FetchReact />
     </div>
   );
 }
