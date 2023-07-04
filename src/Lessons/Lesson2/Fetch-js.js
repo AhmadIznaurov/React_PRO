@@ -1,7 +1,7 @@
 import React from 'react';
 import {func} from "./export.module";
 
-export const Fetch = () => {
+export const FetchJs = () => {
 
     // const promise = new Promise((resolve, reject) => {
     //     const a = 700;
