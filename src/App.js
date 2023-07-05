@@ -1,36 +1,43 @@
-import  './index.css'
-import {useEffect, useState} from "react";
+import React, { useState } from 'react';
+import './index.css'
 
-function App() {
 
-    const [photo, setPhoto] = useState([]);
-    useEffect( () => {
+const App = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [list, setList] = useState([]);
 
-        fetch("https://jsonplaceholder.typicode.com/photos")
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('ERROR')
-                }
-                return response.json()
-            })
-            .then((json) => {
-                setPhoto(json)
-            }).catch((e) => {
-            console.log(e)
-        })
-    }, [])
+    const handleClick = () => {
+        setIsLoading(true);
+
+        fetch('https://jsonplaceholder.typicode.com/photos')
+            .then(response => response.json())
+            .then(data => {
+                setList(data);
+                setIsLoading(false);
+            });
+    }
+
+    const Preloader = () => {
+        return (
+            <div className="preloader">Loading...</div>
+        );
+    }
+
 
     return (
-            <>
-                {photo.map((item) => {
-                    return (
-                            <div className="App">
-                                {item.url}
-                            </div>
-                        )
-                })}
-            </>
-    );
+        <div className="App">
+            <button onClick={handleClick}>TOUCH HERE</button>
 
+            {isLoading ? <Preloader /> : (
+                <ol>
+                    {list.map(item => (
+                        <li key={item.id}>{item.url}</li>
+                    ))}
+                </ol>
+            )}
+
+        </div>
+    );
 }
+
 export default App;
