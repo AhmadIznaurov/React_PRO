@@ -1,34 +1,36 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './index.css'
+import {useDispatch, useSelector} from "react-redux";
+import {loadList} from "./action";
 
 
 const App = () => {
+    const list = useSelector((state) => state);
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
-    const [list, setList] = useState([]);
 
     const handleClick = () => {
-        setIsLoading(true);
-
-        fetch('https://jsonplaceholder.typicode.com/photos')
-            .then(response => response.json())
-            .then(data => {
-                setList(data);
-                setIsLoading(false);
-            });
+            setIsLoading(true);
+            dispatch(loadList());
     }
 
     const Preloader = () => {
-        return (
-            <div className="preloader">Loading...</div>
-        );
+                return (
+                    <div className="preloader">Loading...</div>
+                );
     }
 
+    useEffect(() => {
+        if (isLoading) {
+            dispatch(loadList())
+        }
+    }, [isLoading])
 
     return (
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
 
-            {isLoading ? <Preloader /> : (
+            {!isLoading ? <Preloader /> : (
                 <ol>
                     {list.map(item => (
                         <li key={item.id}>{item.url}</li>
