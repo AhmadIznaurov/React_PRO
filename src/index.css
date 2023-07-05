@@ -3,7 +3,29 @@
   margin: 10px auto;
 }
 
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 54px;
+  font-weight: bold;
+  margin-top: 400px;
+}
 
+ol li:nth-child(even) {
+  background-color: rosybrown;
+}
+
+ol li:nth-child(odd) {
+  background-color: navajowhite;
+}
+
+button {
+  background-color: mediumaquamarine;
+}
+button:hover {
+  background-color: cornflowerblue;
+}
 
 body {
   margin: 0;
