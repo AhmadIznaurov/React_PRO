@@ -8,13 +8,24 @@ import thunk from "redux-thunk";
 
 
 
-const initilState = []
+const initilState = {
+    photos: [],
+    loading: false
+}
 
 
 const reducer = (state = initilState, action) => {
     switch (action.type) {
+
+        case 'load/list/start':
+            return {
+                loading: true
+            }
+
         case 'load/list/fulfilled':
-            return action.payload
+            return {
+                photos: action.payload
+            }
 
 
         default:

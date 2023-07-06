@@ -5,9 +5,10 @@ import {loadList} from "./action";
 
 
 const App = () => {
-    const list = useSelector((state) => state);
+    const list = useSelector((state) => state.photos);
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
+    const loading = useSelector((state) => state.loading)
 
     const handleClick = () => {
             setIsLoading(true);
@@ -30,13 +31,15 @@ const App = () => {
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
 
-            {!isLoading ? <Preloader /> : (
-                <ol>
-                    {list.map(item => (
-                        <li key={item.id}>{item.url}</li>
-                    ))}
-                </ol>
-            )}
+            {
+                loading ? <Preloader /> : (
+                    <ol>
+                        {list.map(item => (
+                            <li key={item.id}>{item.url}</li>
+                        ))}
+                    </ol>
+                )
+            }
 
         </div>
     );
