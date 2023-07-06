@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
 import {loadList} from "./action";
-
+import ReactLoading from 'react-loading';
 
 const App = () => {
     const list = useSelector((state) => state.photos);
@@ -15,11 +15,14 @@ const App = () => {
             dispatch(loadList());
     }
 
-    const Preloader = () => {
-                return (
-                    <div className="preloader">Loading...</div>
-                );
-    }
+
+         const Preloader = () => {
+             return (
+                 <div className="preloader">
+                     <ReactLoading type={'spin'} color={'red'} height={200} width={200} />
+                 </div>
+             );
+         }
 
     useEffect(() => {
         if (isLoading) {
