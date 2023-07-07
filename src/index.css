@@ -12,6 +12,10 @@
   margin-top: 400px;
 }
 
+ol {
+  width: 700px;
+  margin: 30px auto;
+}
 ol li:nth-child(even) {
   background-color: rosybrown;
 }
@@ -26,6 +30,20 @@ button {
 button:hover {
   background-color: cornflowerblue;
 }
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 5px;
+}
+
+li > button {
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  color: lightyellow;
+}
+
 
 body {
   margin: 0;
@@ -34,7 +52,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://27sysday.ru/wp-content/uploads/2021/05/wp5070716.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

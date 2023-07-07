@@ -33,17 +33,19 @@ const App = () => {
     return (
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
+            {loading ? <Preloader /> : (
+                <ol>
+                    {list.map(item => (
 
-            {
-                loading ? <Preloader /> : (
-                    <ol>
-                        {list.map(item => (
-                            <li key={item.id}>{item.url}</li>
-                        ))}
-                    </ol>
-                )
-            }
+                                <li key={item.id}>
+                                <input type="checkbox"  />
+                                {item.url}
+                                <button className="button">Delete</button>
+                                </li>
 
+                    ))}
+                </ol>
+            )}
         </div>
     );
 }
