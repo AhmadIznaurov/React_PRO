@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
-import {loadList} from "./action";
+import {deleteList, loadList} from "./action";
 import ReactLoading from 'react-loading';
 
 const App = () => {
@@ -46,12 +46,26 @@ const App = () => {
         }
     }, [isLoading])
 
+
+    const handleRemove = (id) => {
+        dispatch(deleteList(id))
+    }
+
     return (
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
             {loading ? <Preloader /> : (
                 <ol>
                     {list.map(item => (
+
+
+                                <li key={item.id}>
+                                <input type="checkbox"  />
+                                {item.url}
+                                <button className="button" onClick={() => handleRemove(item.id)}>Delete</button>
+                                </li>
+
+
                         <li key={item.id}>
                             <input
                                 type='checkbox'
@@ -63,6 +77,7 @@ const App = () => {
                                 Delete
                             </button>
                         </li>
+
                     ))}
                 </ol>
             )}

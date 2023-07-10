@@ -21,14 +21,29 @@ const reducer = (state = initialState, action) => {
 
         case 'load/list/start':
             return {
+
+                ...state,
+
                ...state,
+
                 loading: true
             }
 
         case 'load/list/fulfilled':
             return {
 
+               ...state,
+                photos: action.payload,
+                loading: false
+            }
+
+        case 'delete/list/fulfilled':
+            return {
+                ...state,
+                photos: state.photos.filter((list) => list.id !== action.payload)
+
                 photos: action.payload
+
             }
 
         case 'DELETE_ITEMS':
