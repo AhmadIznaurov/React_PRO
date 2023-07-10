@@ -8,23 +8,30 @@ import thunk from "redux-thunk";
 
 
 
-const initilState = {
+const initialState = {
     photos: [],
-    loading: false
+    loading: false,
+    items: [],
+
 }
 
 
-const reducer = (state = initilState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'load/list/start':
             return {
+
                 ...state,
+
+               ...state,
+
                 loading: true
             }
 
         case 'load/list/fulfilled':
             return {
+
                ...state,
                 photos: action.payload,
                 loading: false
@@ -34,8 +41,16 @@ const reducer = (state = initilState, action) => {
             return {
                 ...state,
                 photos: state.photos.filter((list) => list.id !== action.payload)
+
+                photos: action.payload
+
             }
 
+        case 'DELETE_ITEMS':
+            return {
+                ...state,
+                items: action.payload
+            }
 
         default:
             return state;
