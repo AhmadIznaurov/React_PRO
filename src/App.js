@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
-import {loadList} from "./action";
+import {deleteList, loadList} from "./action";
 import ReactLoading from 'react-loading';
 
 const App = () => {
@@ -30,6 +30,11 @@ const App = () => {
         }
     }, [isLoading])
 
+
+    const handleRemove = (id) => {
+        dispatch(deleteList(id))
+    }
+
     return (
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
@@ -40,7 +45,7 @@ const App = () => {
                                 <li key={item.id}>
                                 <input type="checkbox"  />
                                 {item.url}
-                                <button className="button">Delete</button>
+                                <button className="button" onClick={() => handleRemove(item.id)}>Delete</button>
                                 </li>
 
                     ))}

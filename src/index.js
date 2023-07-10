@@ -19,12 +19,21 @@ const reducer = (state = initilState, action) => {
 
         case 'load/list/start':
             return {
+                ...state,
                 loading: true
             }
 
         case 'load/list/fulfilled':
             return {
-                photos: action.payload
+               ...state,
+                photos: action.payload,
+                loading: false
+            }
+
+        case 'delete/list/fulfilled':
+            return {
+                ...state,
+                photos: state.photos.filter((list) => list.id !== action.payload)
             }
 
 
