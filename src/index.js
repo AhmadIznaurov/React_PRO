@@ -42,12 +42,7 @@ const reducer = (state = initilState, action) => {
     }
 };
 
-
-
-
-
-const store = createStore(reducer, applyMiddleware(thunk))
-
+const store = createStore(reducer, applyMiddleware(thunk));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <Provider store={store}>
@@ -56,3 +51,4 @@ root.render(
 
 );
 
+// It was not real fun when the www.render send the strange error
