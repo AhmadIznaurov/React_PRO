@@ -36,6 +36,20 @@ const reducer = (state = initilState, action) => {
                 photos: state.photos.filter((list) => list.id !== action.payload)
             }
 
+            case 'add/load/success':
+                return  {
+                    ...state,
+                  photos: state.photos.map((list) => {
+                      if (list && list.id === action.payload) {
+                          return  {
+                              ...list,
+                            id: !list.id
+                          }
+                      }
+                      return list;
+                  })
+                }
+
 
         default:
             return state;
@@ -51,4 +65,3 @@ root.render(
 
 );
 
-// It was not real fun when the www.render send the strange error
