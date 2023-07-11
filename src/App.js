@@ -66,3 +66,5 @@ const App = () => {
 }
 
 export default App;
+
+// We don't have much free time. It takes time to gain much-needed knowledge
