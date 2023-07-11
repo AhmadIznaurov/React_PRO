@@ -13,6 +13,8 @@ export const loadList = () => {
 };
 
 
+
+
 export const deleteList = (id) => {
     return (dispatch) => {
         dispatch({type: 'delete/list/start'})
@@ -20,12 +22,38 @@ export const deleteList = (id) => {
             method: 'DELETE'
         })
             .then((response) => response.json())
-            .then((json) => {
+            .then(() => {
                 dispatch({
                     type: 'delete/list/fulfilled',
                     payload: id
                 })
             })
+    }
+
+}
+
+
+
+export const addOnchangeClick = (id) => {
+    return (dispatch) => {
+        dispatch({type: 'add/load/start'})
+        fetch(`https://jsonplaceholder.typicode.com/photos/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+               item: 'id'
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then(() => {
+                dispatch({
+                    type: 'add/load/success',
+                    payload: id
+                })
+            })
+
     }
 
 }

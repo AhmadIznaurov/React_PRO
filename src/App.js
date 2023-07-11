@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
-import {deleteList, loadList} from "./action";
+import {addOnchangeClick, deleteList, loadList} from "./action";
 import ReactLoading from 'react-loading';
+
+
 
 const App = () => {
     const list = useSelector((state) => state.photos);
@@ -51,6 +53,10 @@ const App = () => {
         dispatch(deleteList(id))
     }
 
+    const handleChecked = (id) => {
+        dispatch(addOnchangeClick(id))
+    }
+
     return (
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
@@ -60,7 +66,11 @@ const App = () => {
 
 
                                 <li key={item.id}>
-                                <input type="checkbox"  />
+                                <input
+                                    type="checkbox"
+                                    checked={item.id % 2 === 1}
+                                    onChange={() => handleChecked(item.id)}
+                                />
                                 {item.url}
                                 <button className="button" onClick={() => handleRemove(item.id)}>Delete</button>
                                 </li>
