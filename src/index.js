@@ -37,6 +37,20 @@ const reducer = (state = initialState, action) => {
                 loading: false
             }
 
+        case 'delete/list/start':
+            return {
+                ...state,
+                photos: state.photos.map(list => {
+                    if(list.id === action.payload) {
+                        return {
+                            ...list,
+                            deleting: true
+                        }
+                    }
+                    return list
+                })
+            }
+
         case 'delete/list/fulfilled':
             return {
                 ...state,

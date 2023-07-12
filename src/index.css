@@ -24,12 +24,12 @@ ol li:nth-child(odd) {
   background-color: navajowhite;
 }
 
-button {
-  background-color: mediumaquamarine;
-}
-button:hover {
-  background-color: cornflowerblue;
-}
+/*button {*/
+/*  background-color: mediumaquamarine;*/
+/*}*/
+/*button:hover {*/
+/*  background-color: cornflowerblue;*/
+/*}*/
 li {
   display: flex;
   justify-content: space-between;
@@ -37,12 +37,12 @@ li {
   margin: 5px;
 }
 
-li > button {
-  background-color: red;
-  border: none;
-  border-radius: 10px;
-  color: lightyellow;
-}
+/*li > button {*/
+/*  background-color: red;*/
+/*  border: none;*/
+/*  border-radius: 10px;*/
+/*  color: lightyellow;*/
+/*}*/
 
 
 body {

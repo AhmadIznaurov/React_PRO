@@ -72,7 +72,9 @@ const App = () => {
                                     onChange={() => handleChecked(item.id)}
                                 />
                                 {item.url}
-                                <button className="button" onClick={() => handleRemove(item.id)}>Delete</button>
+                                <button className="button"
+                                        onClick={() => handleRemove(item.id)}
+                                        disabled={item.deleting}>Delete</button>
                                 </li>
 
 
@@ -97,4 +99,3 @@ const App = () => {
 
 export default App;
 
-// We don't have much free time. It takes time to gain much-needed knowledge
