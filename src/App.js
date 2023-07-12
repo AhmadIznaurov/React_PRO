@@ -63,8 +63,8 @@ const App = () => {
                                         <ReactLoading
                                             type={"balls"}
                                             color={"green"}
-                                            height={30}
-                                            width={30}
+                                            height={32}
+                                            width={32}
                                         />
                                     )}
                                 </li>
