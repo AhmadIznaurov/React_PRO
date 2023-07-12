@@ -77,8 +77,8 @@ const App = () => {
                                         <ReactLoading
                                             type={"spokes"}
                                             color={"blue"}
-                                            height={32}
-                                            width={32}
+                                            height={20}
+                                            width={20}
                                         />
                                     )}
                                 {item.url}
