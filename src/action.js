@@ -17,7 +17,7 @@ export const loadList = () => {
 
 export const deleteList = (id) => {
     return (dispatch) => {
-        dispatch({type: 'delete/list/start'})
+        dispatch({type: 'delete/list/start', payload: id})
         fetch(`https://jsonplaceholder.typicode.com/photos/?_limit=50${id}`, {
             method: 'DELETE'
         })
