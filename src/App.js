@@ -37,6 +37,7 @@ const App = () => {
         dispatch(deleteList(id))
     }
 
+
     const handleChecked = (id) => {
         dispatch(addOnchangeClick(id))
     }
@@ -58,8 +59,15 @@ const App = () => {
                                 <button className="button"
                                         onClick={() => handleRemove(item.id)}
                                         disabled={item.deleting}>Delete</button>
+                                    {item.deleting && (
+                                        <ReactLoading
+                                            type={"balls"}
+                                            color={"green"}
+                                            height={30}
+                                            width={30}
+                                        />
+                                    )}
                                 </li>
-
                     ))}
                 </ol>
             )}
