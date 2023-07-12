@@ -42,6 +42,7 @@ const App = () => {
         dispatch({ type: 'DELETE_ITEMS', payload: filteredList });
         setSelectedItems([]);
     };
+
     useEffect(() => {
         if (isLoading) {
             dispatch(loadList())
@@ -72,6 +73,14 @@ const App = () => {
                                     checked={item.id % 2 === 1}
                                     onChange={() => handleChecked(item.id)}
                                 />
+                                    {item.id || (
+                                        <ReactLoading
+                                            type={"spokes"}
+                                            color={"blue"}
+                                            height={32}
+                                            width={32}
+                                        />
+                                    )}
                                 {item.url}
                                 <button className="button"
                                         onClick={() => handleRemove(item.id)}
