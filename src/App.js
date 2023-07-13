@@ -3,11 +3,12 @@ import './index.css'
 import {useDispatch, useSelector} from "react-redux";
 import {addOnchangeClick, deleteList, loadList} from "./redux/action";
 import ReactLoading from 'react-loading';
+import {Lists} from "./components/Lists";
 
 
 
 const App = () => {
-    const list = useSelector((state) => state.photos);
+
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
     const loading = useSelector((state) => state.loading)
@@ -63,6 +64,9 @@ const App = () => {
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
             {loading ? <Preloader /> : (
+
+                <Lists handleRemove={handleRemove} handleChecked={handleChecked} />
+
                 <ol>
                     {list.map(item => (
 
@@ -108,6 +112,7 @@ const App = () => {
 
                     ))}
                 </ol>
+
             )}
         </div>
     );
