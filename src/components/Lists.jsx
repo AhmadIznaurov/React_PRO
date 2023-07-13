@@ -11,7 +11,8 @@ export const Lists = ({handleChecked, handleRemove}) => {
                 <ol>
                     {list.map(item => (
                         <List
-                            id={item.id}
+                            id={item.id} // Добавлено id к item внутри цикла map, чтобы ошибка не выбрасывалась в консоле DOM
+                            key={item.id}
                             deleting={item.deleting}
                             url={item.url}
                             handleChecked={handleChecked}
