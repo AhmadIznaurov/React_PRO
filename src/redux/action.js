@@ -1,6 +1,6 @@
 export const loadList = () => {
     return (dispatch) => {
-        dispatch({type: "load/list/start"})
+        dispatch({type: "load/list/start"}) // Правильные название типов. Не {type: 'start'} а к примеру {type: "load/list/start"}
         fetch("https://jsonplaceholder.typicode.com/photos/?_limit=50")
             .then((response) => response.json())
             .then((json) => {
@@ -11,8 +11,6 @@ export const loadList = () => {
             });
     };
 };
-
-
 
 
 export const deleteList = (id) => {
@@ -31,7 +29,6 @@ export const deleteList = (id) => {
     }
 
 }
-
 
 
 export const addOnchangeClick = (id) => {
