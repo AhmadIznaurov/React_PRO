@@ -11,6 +11,7 @@ const App = () => {
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
     const loading = useSelector((state) => state.loading)
+    const [selectedItems, setSelectedItems] = useState([]);
 
     const handleClick = () => {
             setIsLoading(true);
@@ -26,6 +27,21 @@ const App = () => {
              );
          }
 
+    const handleCheckboxChange = (itemId) => {
+        setSelectedItems((prevSelectedItems) => {
+            if (prevSelectedItems.includes(itemId)) {
+                return prevSelectedItems.filter((id) => id !== itemId);
+            } else {
+                return [...prevSelectedItems, itemId];
+            }
+        });
+    };
+
+    const handleDelete = () => {
+        const filteredList = list.filter(item => !selectedItems.includes(item.id));
+        dispatch({ type: 'DELETE_ITEMS', payload: filteredList });
+        setSelectedItems([]);
+    };
 
     useEffect(() => {
         if (isLoading) {
@@ -49,6 +65,7 @@ const App = () => {
             {loading ? <Preloader /> : (
                 <ol>
                     {list.map(item => (
+
 
                                 <li key={item.id}>
                                 <input
@@ -77,6 +94,18 @@ const App = () => {
                                         />
                                     )}
                                 </li>
+                        <li key={item.id}>
+                            <input
+                                type='checkbox'
+                                checked={selectedItems.includes(item.id)}
+                                onChange={() => handleCheckboxChange(item.id)}
+                            />
+                            {item.url}
+                            <button className='button' onClick={handleDelete}>
+                                Delete
+                            </button>
+                        </li>
+
                     ))}
                 </ol>
             )}
