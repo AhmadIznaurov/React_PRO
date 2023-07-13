@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
-import {addOnchangeClick, deleteList, loadList} from "./action";
+import {addOnchangeClick, deleteList, loadList} from "./redux/action";
 import ReactLoading from 'react-loading';
 
 
