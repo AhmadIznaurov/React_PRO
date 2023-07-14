@@ -3,7 +3,10 @@
 
 const initilState = {
     photos: [],
-    loading: false
+    loading: false,
+
+    users:[],
+    loadingUsers: false
 }
 
 
@@ -57,6 +60,19 @@ export const reducer = (state = initilState, action) => {
                 })
             }
 
+        case 'load/users/start':
+            return {
+                ...state,
+                loadingUsers: true
+            }
+
+
+        case 'load/users/fulfilled':
+            return {
+                ...state,
+                users: action.payload,
+                loadingUsers: false
+            }
 
         default:
             return state;

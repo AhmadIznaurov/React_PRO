@@ -1,6 +1,6 @@
 export const loadList = () => {
     return (dispatch) => {
-        dispatch({type: "load/list/start"}) // Правильные название типов. Не {type: 'start'} а к примеру {type: "load/list/start"}
+        dispatch({type: "load/list/start"})
         fetch("https://jsonplaceholder.typicode.com/photos/?_limit=50")
             .then((response) => response.json())
             .then((json) => {
@@ -53,4 +53,18 @@ export const addOnchangeClick = (id) => {
 
     }
 
+}
+
+export  const loadUsers = () => {
+    return (dispatch) => {
+        dispatch({type: "load/users/start"})
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then((response) => response.json())
+            .then((json) => {
+                dispatch({
+                    type: "load/users/fulfilled",
+                    payload: json,
+                });
+            });
+    };
 }

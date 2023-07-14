@@ -4,12 +4,19 @@ import {Button} from "./Button";
 import {InputCheck} from "./InputCheck";
 
 
-export  const List = ({id, deleting, url, handleChecked, handleRemove}) => {
+
+export  const List = ({id, deleting, url, handleChecked, handleRemove, albumId, users}) => {
+
+    const user = users.filter((u) => u.id === albumId)
+
     return (
 
         <li key={id}>
             <InputCheck handleChecked={handleChecked} id={id}/>
             {url}
+            <b>
+              (email: {user[0]?.email})
+            </b>
             <Button
                 id={id}
                 deleting={deleting}

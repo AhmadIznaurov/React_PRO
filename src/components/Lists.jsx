@@ -4,15 +4,17 @@ import {List} from "./List";
 
 export const Lists = ({handleChecked, handleRemove}) => {
     const list = useSelector((state) => state.photos);
-
+    const users = useSelector((state) => state.users)
     return (
         <div>
             {
                 <ol>
                     {list.map(item => (
                         <List
-                            id={item.id} // Добавлено id к item внутри цикла map, чтобы ошибка не выбрасывалась в консоле DOM
+                            albumId={item.albumId}
+                            id={item.id}
                             key={item.id}
+                            users={users}
                             deleting={item.deleting}
                             url={item.url}
                             handleChecked={handleChecked}
