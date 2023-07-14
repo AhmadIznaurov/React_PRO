@@ -9,9 +9,12 @@ import {Lists} from "./components/Lists";
 
 const App = () => {
 
-    const dispatch = useDispatch()
-    const [isLoading, setIsLoading] = useState(false);
     const loading = useSelector((state) => state.loading)
+    const [isLoading, setIsLoading] = useState(false);
+    const loadingUsers = useSelector((state) => state.loadingUsers)
+    const waiting = loading || loadingUsers
+    const dispatch = useDispatch()
+
 
     const handleClick = () => {
             setIsLoading(true);
@@ -48,7 +51,7 @@ const App = () => {
     return (
         <div className="App">
             <button onClick={handleClick}>TOUCH HERE</button>
-            {loading ? <Preloader /> : (
+            { waiting ? <Preloader /> : (
                 <Lists handleRemove={handleRemove} handleChecked={handleChecked} />
             )}
         </div>
