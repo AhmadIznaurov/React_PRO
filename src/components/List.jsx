@@ -7,7 +7,7 @@ import {InputCheck} from "./InputCheck";
 
 export  const List = ({id, deleting, url, handleChecked, handleRemove, albumId, users}) => {
 
-    const user = users.filter((u) => u.id === albumId)
+    const user = users.find((u) => u.id === albumId)
 
     return (
 
@@ -15,7 +15,7 @@ export  const List = ({id, deleting, url, handleChecked, handleRemove, albumId, 
             <InputCheck handleChecked={handleChecked} id={id}/>
             {url}
             <b>
-              (email: {user[0]?.email})
+              (email: {user.email})
             </b>
             <Button
                 id={id}
