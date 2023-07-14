@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
-import {addOnchangeClick, deleteList, loadList} from "./redux/action";
+import {addOnchangeClick, deleteList, loadList, loadUsers} from "./redux/action";
 import ReactLoading from 'react-loading';
 import {Lists} from "./components/Lists";
 
@@ -31,6 +31,7 @@ const App = () => {
     useEffect(() => {
         if (isLoading) {
             dispatch(loadList())
+            dispatch(loadUsers())
         }
     }, [isLoading])
 
