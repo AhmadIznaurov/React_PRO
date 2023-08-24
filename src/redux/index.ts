@@ -10,3 +10,5 @@ const logger = createLogger({
 
 
 export const store = createStore(reducer, applyMiddleware(thunk, logger));
+
+export type RootState = ReturnType<typeof reducer>

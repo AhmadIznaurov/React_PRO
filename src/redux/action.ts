@@ -1,5 +1,5 @@
 export const loadList = () => {
-    return (dispatch) => {
+    return (dispatch): void => {
         dispatch({type: "load/list/start"})
         fetch("https://jsonplaceholder.typicode.com/photos/?_limit=50")
             .then((response) => response.json())
@@ -13,8 +13,8 @@ export const loadList = () => {
 };
 
 
-export const deleteList = (id) => {
-    return (dispatch) => {
+export const deleteList = (id: number) => {
+    return (dispatch): void => {
         dispatch({type: 'delete/list/start', payload: id})
         fetch(`https://jsonplaceholder.typicode.com/photos/?_limit=50${id}`, {
             method: 'DELETE'
@@ -31,8 +31,8 @@ export const deleteList = (id) => {
 }
 
 
-export const addOnchangeClick = (id) => {
-    return (dispatch) => {
+export const addOnchangeClick = (id: number) => {
+    return (dispatch): void => {
         dispatch({type: 'add/load/start'})
         fetch(`https://jsonplaceholder.typicode.com/photos/${id}`, {
             method: 'PATCH',
@@ -56,7 +56,7 @@ export const addOnchangeClick = (id) => {
 }
 
 export  const loadUsers = () => {
-    return (dispatch) => {
+    return (dispatch): void => {
         dispatch({type: "load/users/start"})
         fetch("https://jsonplaceholder.typicode.com/users")
             .then((response) => response.json())

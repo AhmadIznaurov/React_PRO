@@ -7,16 +7,16 @@ import {Lists} from "./components/Lists";
 
 
 
-const App = () => {
+export const App: React.FC = () => {
 
     const loading = useSelector((state) => state.loading)
     const [isLoading, setIsLoading] = useState(false);
     const loadingUsers = useSelector((state) => state.loadingUsers)
-    const waiting = loading || loadingUsers
+    const waiting: boolean = loading || loadingUsers
     const dispatch = useDispatch()
 
 
-    const handleClick = () => {
+    const handleClick = (): void => {
             setIsLoading(true);
             dispatch(loadList());
     }
@@ -31,7 +31,7 @@ const App = () => {
          }
 
 
-    useEffect(() => {
+    useEffect((): void => {
         if (isLoading) {
             dispatch(loadList())
             dispatch(loadUsers())
@@ -39,12 +39,12 @@ const App = () => {
     }, [isLoading])
 
 
-    const handleRemove = (id) => {
+    const handleRemove = (id): void => {
         dispatch(deleteList(id))
     }
 
 
-    const handleChecked = (id) => {
+    const handleChecked = (id): void => {
         dispatch(addOnchangeClick(id))
     }
 
@@ -58,5 +58,4 @@ const App = () => {
     );
 }
 
-export default App;
 
