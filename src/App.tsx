@@ -59,6 +59,5 @@ export const App: React.FC = () => {
 }
 
 
-//
-//
-//
+// Video stop in 15:00 - 1:25:15
+
