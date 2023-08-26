@@ -1,24 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
-import {useDispatch, useSelector} from "react-redux";
-import {addOnchangeClick, deleteList, loadList, loadUsers} from "./redux/action";
 import ReactLoading from 'react-loading';
 import {Lists} from "./components/Lists";
+import {useTypedSelector} from "./hooks";
+import {useActions} from "./hooks/useActions";
 
 
 
 export const App: React.FC = () => {
 
-    const loading = useSelector((state) => state.loading)
+    const loading: boolean = useTypedSelector((state) => state.loading)
     const [isLoading, setIsLoading] = useState(false);
-    const loadingUsers = useSelector((state) => state.loadingUsers)
+    const loadingUsers: boolean = useTypedSelector((state) => state.loadingUsers)
     const waiting: boolean = loading || loadingUsers
-    const dispatch = useDispatch()
+    const {addOnchangeClick, deleteList, loadList, loadUsers} = useActions()
+
 
 
     const handleClick = (): void => {
             setIsLoading(true);
-            dispatch(loadList());
+            loadList();
     }
 
 
@@ -33,19 +34,19 @@ export const App: React.FC = () => {
 
     useEffect((): void => {
         if (isLoading) {
-            dispatch(loadList())
-            dispatch(loadUsers())
+            loadList()
+            loadUsers()
         }
     }, [isLoading])
 
 
-    const handleRemove = (id): void => {
-        dispatch(deleteList(id))
+    const handleRemove = (id: number): void => {
+           deleteList(id)
     }
 
 
-    const handleChecked = (id): void => {
-        dispatch(addOnchangeClick(id))
+    const handleChecked = (id: number): void => {
+           addOnchangeClick(id)
     }
 
     return (
@@ -57,5 +58,3 @@ export const App: React.FC = () => {
         </div>
     );
 }
-
-

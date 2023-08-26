@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactLoading from "react-loading";
 
-export const InputCheck = ({handleChecked, id}) => {
+interface InputCheckProps {
+    handleChecked: (id: number) => void
+    id: number
+}
+
+export const InputCheck: React.FC<InputCheckProps> = ({handleChecked, id}) => {
     return (
         <>
             <input

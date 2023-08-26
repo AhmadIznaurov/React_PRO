@@ -3,9 +3,17 @@ import ReactLoading from "react-loading";
 import {Button} from "./Button";
 import {InputCheck} from "./InputCheck";
 
+interface ListProps {
+    id: number
+    deleting: boolean
+    url: string
+    handleChecked: (id: number) => void
+    handleRemove:  (id: number) => void
+    albumId: number
+    users: any[]
+}
 
-
-export  const List = ({id, deleting, url, handleChecked, handleRemove, albumId, users}) => {
+export  const List: React.FC<ListProps> = ({id, deleting, url, handleChecked, handleRemove, albumId, users}) => {
 
     const user = users.find((u) => u.id === albumId)
 

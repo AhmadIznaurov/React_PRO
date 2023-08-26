@@ -1,10 +1,15 @@
 import React from 'react';
-import {useSelector} from "react-redux";
 import {List} from "./List";
+import {useTypedSelector} from "../hooks";
 
-export const Lists = ({handleChecked, handleRemove}) => {
-    const list = useSelector((state) => state.photos);
-    const users = useSelector((state) => state.users)
+interface ListsProps {
+    handleChecked: (id: number) => void
+    handleRemove:  (id: number) => void
+}
+
+export const Lists: React.FC<ListsProps> = ({handleChecked, handleRemove}) => {
+    const list = useTypedSelector((state) => state.photos);
+    const users = useTypedSelector((state) => state.users)
     return (
         <div>
             {
