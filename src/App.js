@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import './index.css'
 import {useDispatch, useSelector} from "react-redux";
-import {addOnchangeClick, deleteList, loadList, loadUsers} from "./redux/action";
 import ReactLoading from 'react-loading';
 import {Lists} from "./components/Lists";
+import { addOnchangeClick, deleteList, loadList } from './redux/PhotosSlice'
+import {  loadUsers } from './redux/UsersSlice'
 
 
 
-const App = () => {
+export const App = () => {
 
-    const loading = useSelector((state) => state.loading)
+    const loading = useSelector((state) => state.photos.loading)
     const [isLoading, setIsLoading] = useState(false);
-    const loadingUsers = useSelector((state) => state.loadingUsers)
-    const waiting = loading || loadingUsers
+    // const loadingUsers = useSelector((state) => state.users.loadingUsers)  || loadingUsers
     const dispatch = useDispatch()
+    const waiting = loading
 
 
     const handleClick = () => {
@@ -44,8 +45,8 @@ const App = () => {
     }
 
 
-    const handleChecked = (id) => {
-        dispatch(addOnchangeClick(id))
+    const handleChecked = (id, completed) => {
+        dispatch(addOnchangeClick({id, completed}))
     }
 
     return (
@@ -58,5 +59,5 @@ const App = () => {
     );
 }
 
-export default App;
+
 

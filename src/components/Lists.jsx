@@ -3,8 +3,8 @@ import {useSelector} from "react-redux";
 import {List} from "./List";
 
 export const Lists = ({handleChecked, handleRemove}) => {
-    const list = useSelector((state) => state.photos);
-    const users = useSelector((state) => state.users)
+    const list = useSelector((state) => state.photos.photos);
+    const users = useSelector((state) => state.users.users)
     return (
         <div>
             {
@@ -13,6 +13,8 @@ export const Lists = ({handleChecked, handleRemove}) => {
                         <List
                             albumId={item.albumId}
                             id={item.id}
+                            checking={item.checking}
+                            completed={item.completed}
                             key={item.id}
                             users={users}
                             deleting={item.deleting}

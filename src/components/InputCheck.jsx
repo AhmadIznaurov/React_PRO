@@ -1,24 +1,24 @@
 import React from 'react';
 import ReactLoading from "react-loading";
 
-export const InputCheck = ({handleChecked, id}) => {
+export const InputCheck = ({handleChecked, id, completed, checking}) => {
     return (
         <>
-            <input
-                type="checkbox"
-                checked={id % 2 === 1}
-                onChange={() => handleChecked(id)}
-            />
-            {id || (
+            {  checking ? (
                 <ReactLoading
-                    type={"spokes"}
-                    color={"blue"}
-                    height={20}
-                    width={20}
+                  type={"spokes"}
+                  color={"blue"}
+                  height={20}
+                  width={20}
                 />
-            )}
-        </>
-
+              ) : (
+                <input
+                  type="checkbox"
+                  checked={completed}
+                  onChange={() => handleChecked(id, completed)}
+                />
+              )
+}       </>
     );
 }
 

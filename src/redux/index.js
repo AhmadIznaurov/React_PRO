@@ -1,12 +1,10 @@
-import {applyMiddleware, createStore} from "redux";
-import thunk from "redux-thunk";
-import {reducer} from "./reducer";
-import {createLogger} from "redux-logger";
+import { configureStore } from '@reduxjs/toolkit';
+import PhotoReducer from './PhotosSlice';
+import UserReducer from './UsersSlice';
 
-const logger = createLogger({
-     collapsed: true,
-     diff: true
+export const store = configureStore({
+     reducer: {
+       photos: PhotoReducer,
+       users: UserReducer
+     },
 })
-
-
-export const store = createStore(reducer, applyMiddleware(thunk, logger));
